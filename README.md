@@ -49,7 +49,7 @@ npm run preview
 
 ## Credits
 
-Inspired by [SunkenInTime/ui-design-bench](https://github.com/SunkenInTime/ui-design-bench) — go check out the original!
+Inspired by [SunkenInTime/ui-design-bench](https://github.com/SunkenInTime/ui-design-bench)
 
 ## License
 
