@@ -47,6 +47,10 @@ npm run preview
 | `←` / `↑` | Previous page |
 | `→` / `↓` | Next page |
 
+## Credits
+
+Inspired by [SunkenInTime/ui-design-bench](https://github.com/SunkenInTime/ui-design-bench) — go check out the original!
+
 ## License
 
 MIT
