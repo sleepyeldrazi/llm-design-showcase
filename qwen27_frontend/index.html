@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindweave — Your Second Brain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;700&family=Newsreader:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Instrument+Sans:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   GLOBAL RESET & ROUTER
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* ============================================
+   DESIGN SWITCHER (floating, always visible)
+   ============================================ */
+.design-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.design-switcher:hover { transform: translateY(0); }
+.design-switcher .label {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.design-switcher button {
+  width: 36px;
+  height: 36px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.design-switcher button:hover {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+}
+.design-switcher button.active {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+.design-switcher button .tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+.design-switcher button:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   PAGE 1 — NEURAL ORGANIC
+   ============================================ */
+#page1 {
+  min-height: 100vh;
+  background: #06060e;
+  color: #e8e0f0;
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+#page1 .bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+#page1 .content {
+  position: relative;
+  z-index: 1;
+}
+#page1 .hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+#page1 .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(120, 80, 255, 0.1);
+  border: 1px solid rgba(120, 80, 255, 0.25);
+  font-size: 13px;
+  font-weight: 500;
+  color: #a78bfa;
+  margin-bottom: 32px;
+  letter-spacing: 0.3px;
+}
+#page1 .hero-badge .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+#page1 h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #e8e0f0 0%, #a78bfa 40%, #6366f1 60%, #a78bfa 80%, #e8e0f0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+#page1 .hero-sub {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  color: rgba(232, 224, 240, 0.55);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+#page1 .cta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#page1 .btn-primary {
+  padding: 16px 40px;
+  border-radius: 100px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.4);
+}
+#page1 .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(99, 102, 241, 0.6);
+}
+#page1 .btn-secondary {
+  padding: 16px 40px;
+  border-radius: 100px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  background: transparent;
+  color: #a78bfa;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#page1 .btn-secondary:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+/* Neural nodes floating */
+#page1 .neural-section {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#page1 .section-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #6366f1;
+  margin-bottom: 16px;
+}
+#page1 .section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: #e8e0f0;
+}
+#page1 .section-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(232, 224, 240, 0.5);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 60px;
+}
+#page1 .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+#page1 .feature-card {
+  padding: 40px 32px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+#page1 .feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+#page1 .feature-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-4px);
+}
+#page1 .feature-card:hover::before { opacity: 1; }
+#page1 .feature-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(99, 102, 241, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+#page1 .feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #e8e0f0;
+}
+#page1 .feature-card p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(232, 224, 240, 0.45);
+  line-height: 1.6;
+}
+
+/* Stats */
+#page1 .stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 100px 20px;
+  flex-wrap: wrap;
+}
+#page1 .stat {
+  text-align: center;
+}
+#page1 .stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#page1 .stat-label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(232, 224, 240, 0.4);
+  margin-top: 4px;
+}
+
+/* Footer */
+#page1 .footer {
+  text-align: center;
+  padding: 60px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: rgba(232, 224, 240, 0.25);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   PAGE 2 — SWISS BRUTALIST
+   ============================================ */
+#page2 {
+  min-height: 100vh;
+  background: #f5f3f0;
+  color: #0a0a0a;
+  font-family: 'DM Sans', sans-serif;
+}
+#page2 .hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: 60px;
+  gap: 0;
+}
+#page2 .hero-top {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 40px;
+  border-bottom: 3px solid #0a0a0a;
+}
+#page2 .logo-mark {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+#page2 .logo-mark span { color: #ff3b00; }
+#page2 .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+#page2 .nav-links a {
+  color: #0a0a0a;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+#page2 .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff3b00;
+  transition: width 0.3s ease;
+}
+#page2 .nav-links a:hover::after { width: 100%; }
+
+#page2 .hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 60px;
+}
+#page2 .hero-left h1 {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+}
+#page2 .hero-left h1 em {
+  font-style: italic;
+  color: #ff3b00;
+}
+#page2 .hero-left p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #555;
+  max-width: 420px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+#page2 .btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  background: #0a0a0a;
+  color: #f5f3f0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#page2 .btn-brutal:hover {
+  background: #ff3b00;
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 #0a0a0a;
+}
+#page2 .btn-brutal .arrow {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+#page2 .btn-brutal:hover .arrow { transform: translateX(4px); }
+
+#page2 .hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#page2 .hero-visual {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+#page2 .hero-visual .grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+#page2 .hero-visual .note-block {
+  position: absolute;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.08);
+  border-left: 3px solid #ff3b00;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  font-family: 'IBM Plex Mono', monospace;
+}
+#page2 .hero-visual .note-block:nth-child(2) { top: 15%; left: 10%; width: 60%; }
+#page2 .hero-visual .note-block:nth-child(3) { top: 35%; right: 5%; width: 55%; border-left-color: #f5f3f0; }
+#page2 .hero-visual .note-block:nth-child(4) { bottom: 25%; left: 8%; width: 70%; border-left-color: #ff3b00; }
+#page2 .hero-visual .note-block:nth-child(5) { bottom: 10%; right: 10%; width: 50%; border-left-color: #f5f3f0; }
+
+#page2 .hero-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 40px;
+  border-top: 3px solid #0a0a0a;
+}
+#page2 .scroll-hint {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+/* Features */
+#page2 .features-section {
+  padding: 120px 60px;
+  border-top: 3px solid #0a0a0a;
+}
+#page2 .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+}
+#page2 .section-header h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+#page2 .section-header h2 span { color: #ff3b00; }
+#page2 .section-header p {
+  max-width: 300px;
+  font-size: 0.95rem;
+  color: #777;
+  line-height: 1.5;
+  text-align: right;
+}
+#page2 .brutal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+#page2 .brutal-card {
+  padding: 48px 36px;
+  background: #0a0a0a;
+  color: #f5f3f0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+#page2 .brutal-card:hover {
+  background: #ff3b00;
+}
+#page2 .brutal-card .card-num {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(245, 243, 240, 0.08);
+  line-height: 1;
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
+}
+#page2 .brutal-card:hover .card-num { color: rgba(245, 243, 240, 0.2); }
+#page2 .brutal-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+#page2 .brutal-card p {
+  font-size: 0.9rem;
+  color: rgba(245, 243, 240, 0.5);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+#page2 .brutal-card:hover p { color: rgba(245, 243, 240, 0.8); }
+
+/* Footer */
+#page2 .footer {
+  padding: 60px;
+  border-top: 3px solid #0a0a0a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#page2 .footer p {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* ============================================
+   PAGE 3 — TERMINAL RETRO
+   ============================================ */
+#page3 {
+  min-height: 100vh;
+  background: #0a0e0a;
+  color: #33ff33;
+  font-family: 'IBM Plex Mono', monospace;
+  position: relative;
+}
+#page3::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(51, 255, 51, 0.015) 2px,
+    rgba(51, 255, 51, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+#page3::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
+  z-index: 101;
+}
+#page3 .content { position: relative; z-index: 1; }
+
+#page3 .terminal-header {
+  padding: 16px 24px;
+  background: rgba(51, 255, 51, 0.05);
+  border-bottom: 1px solid rgba(51, 255, 51, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+#page3 .terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+#page3 .terminal-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+}
+#page3 .terminal-dots span:first-child { background: #ff5f56; border-color: #ff5f56; }
+#page3 .terminal-dots span:nth-child(2) { background: #ffbd2e; border-color: #ffbd2e; }
+#page3 .terminal-dots span:nth-child(3) { background: #27c93f; border-color: #27c93f; }
+#page3 .terminal-title {
+  color: rgba(51, 255, 51, 0.5);
+  font-size: 0.75rem;
+}
+
+#page3 .hero {
+  min-height: calc(100vh - 53px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+}
+#page3 .prompt {
+  color: rgba(51, 255, 51, 0.4);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+#page3 .prompt::before {
+  content: 'user@mindweave:~$ ';
+  color: #33ff33;
+}
+#page3 h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(51, 255, 51, 0.3);
+}
+#page3 h1 .cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: #33ff33;
+  margin-left: 4px;
+  animation: blink-cursor 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+#page3 .hero-desc {
+  font-size: 1rem;
+  color: rgba(51, 255, 51, 0.5);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+#page3 .cmd-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+#page3 .cmd-line .prompt-char { color: #33ff33; }
+#page3 .cmd-line .cmd-text {
+  color: #33ff33;
+  font-size: 1rem;
+}
+#page3 .cmd-line .cursor-block {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: #33ff33;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+#page3 .output-block {
+  margin-bottom: 60px;
+  padding: 24px;
+  border: 1px solid rgba(51, 255, 51, 0.15);
+  background: rgba(51, 255, 51, 0.02);
+}
+#page3 .output-block .line {
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+#page3 .output-block .line.dim { color: rgba(51, 255, 51, 0.3); }
+#page3 .output-block .line.bright { color: #33ff33; }
+#page3 .output-block .line.accent { color: #ffbd2e; }
+
+#page3 .features-terminal {
+  padding: 60px;
+  border-top: 1px solid rgba(51, 255, 51, 0.1);
+}
+#page3 .features-terminal h2 {
+  font-size: 1.4rem;
+  margin-bottom: 32px;
+  color: #33ff33;
+}
+#page3 .features-terminal h2::before {
+  content: '> ';
+  color: rgba(51, 255, 51, 0.4);
+}
+#page3 .term-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: rgba(51, 255, 51, 0.1);
+}
+#page3 .term-card {
+  padding: 32px;
+  background: #0a0e0a;
+  transition: all 0.3s ease;
+}
+#page3 .term-card:hover {
+  background: rgba(51, 255, 51, 0.05);
+}
+#page3 .term-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+#page3 .term-card .card-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+#page3 .term-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #33ff33;
+}
+#page3 .term-card p {
+  font-size: 0.8rem;
+  color: rgba(51, 255, 51, 0.4);
+  line-height: 1.7;
+}
+
+#page3 .footer {
+  padding: 40px 60px;
+  border-top: 1px solid rgba(51, 255, 51, 0.1);
+  font-size: 0.75rem;
+  color: rgba(51, 255, 51, 0.25);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ============================================
+   PAGE 4 — WARM JOURNAL
+   ============================================ */
+#page4 {
+  min-height: 100vh;
+  background: #faf6f0;
+  color: #3d3229;
+  font-family: 'Instrument Sans', sans-serif;
+}
+#page4 .hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  position: relative;
+}
+#page4 .hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, #f0e8dc 0%, transparent 100%);
+  pointer-events: none;
+}
+#page4 .journal-lines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 39px,
+    rgba(180, 160, 140, 0.15) 39px,
+    rgba(180, 160, 140, 0.15) 40px
+  );
+  background-position: 0 80px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+#page4 .hero-content {
+  position: relative;
+  z-index: 1;
+}
+#page4 .handwritten {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #b8956a;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+#page4 h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #3d3229;
+}
+#page4 h1 em {
+  font-style: italic;
+  color: #b8956a;
+}
+#page4 .hero-sub {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: #8a7b6b;
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+#page4 .btn-warm {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  border-radius: 8px;
+  border: 2px solid #b8956a;
+  background: transparent;
+  color: #b8956a;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#page4 .btn-warm:hover {
+  background: #b8956a;
+  color: #faf6f0;
+}
+
+/* Journal cards */
+#page4 .journal-section {
+  padding: 100px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+#page4 .section-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+#page4 .section-intro h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+#page4 .section-intro p {
+  font-size: 1rem;
+  color: #8a7b6b;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+#page4 .journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+#page4 .journal-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: 0 2px 20px rgba(61, 50, 41, 0.06);
+  border: 1px solid rgba(184, 149, 106, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
+}
+#page4 .journal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, #b8956a, #d4b896, #b8956a);
+  border-radius: 0 0 3px 3px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+#page4 .journal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(61, 50, 41, 0.1);
+}
+#page4 .journal-card:hover::before { opacity: 1; }
+#page4 .journal-card .card-emoji {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: block;
+}
+#page4 .journal-card h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #3d3229;
+}
+#page4 .journal-card p {
+  font-size: 0.9rem;
+  color: #8a7b6b;
+  line-height: 1.7;
+}
+
+/* Testimonial */
+#page4 .testimonial-section {
+  padding: 100px 40px;
+  text-align: center;
+  background: #f0e8dc;
+}
+#page4 .testimonial {
+  max-width: 600px;
+  margin: 0 auto;
+}
+#page4 .testimonial blockquote {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #3d3229;
+  margin-bottom: 24px;
+}
+#page4 .testimonial cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: #8a7b6b;
+}
+
+#page4 .footer {
+  text-align: center;
+  padding: 60px 40px;
+  font-size: 0.85rem;
+  color: #b8a898;
+}
+
+/* ============================================
+   PAGE 5 — LUXURY MINIMAL
+   ============================================ */
+#page5 {
+  min-height: 100vh;
+  background: #fafafa;
+  color: #1a1a1a;
+  font-family: 'Instrument Sans', sans-serif;
+}
+#page5 .hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 10%;
+  position: relative;
+}
+#page5 .hero-nav {
+  position: absolute;
+  top: 40px;
+  left: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#page5 .brand {
+  font-family: 'Newsreader', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+#page5 .brand span { color: #c9a96e; }
+#page5 .nav-minimal {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+#page5 .nav-minimal a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+#page5 .nav-minimal a:hover { color: #1a1a1a; }
+
+#page5 .hero-body {
+  max-width: 800px;
+}
+#page5 .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #c9a96e;
+  margin-bottom: 24px;
+}
+#page5 h1 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  color: #1a1a1a;
+}
+#page5 h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+#page5 .hero-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #888;
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+#page5 .btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+}
+#page5 .btn-luxury::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1a1a1a;
+  transition: width 0.4s ease;
+}
+#page5 .btn-luxury:hover::after { width: 0; }
+#page5 .btn-luxury .line {
+  width: 40px;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.3s ease;
+}
+#page5 .btn-luxury:hover .line { width: 60px; }
+
+/* Philosophy section */
+#page5 .philosophy {
+  padding: 160px 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+#page5 .philosophy-left h2 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+#page5 .philosophy-left p {
+  font-size: 0.95rem;
+  color: #888;
+  line-height: 1.8;
+  max-width: 400px;
+}
+#page5 .philosophy-right {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+#page5 .philosophy-item {
+  padding-left: 32px;
+  border-left: 1px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+#page5 .philosophy-item:hover { border-color: #c9a96e; }
+#page5 .philosophy-item .item-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c9a96e;
+  margin-bottom: 8px;
+}
+#page5 .philosophy-item h3 {
+  font-family: 'Newsreader', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+#page5 .philosophy-item p {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.7;
+}
+
+/* Stats */
+#page5 .stats-luxury {
+  padding: 120px 10%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+#page5 .stat-luxury {
+  text-align: center;
+}
+#page5 .stat-luxury .number {
+  font-family: 'Newsreader', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+#page5 .stat-luxury .label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #bbb;
+  margin-top: 8px;
+}
+
+#page5 .footer {
+  padding: 80px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#page5 .footer p {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .design-switcher {
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  #page2 .hero { grid-template-columns: 1fr; padding: 30px; }
+  #page2 .hero-left { padding-right: 0; }
+  #page2 .brutal-grid { grid-template-columns: 1fr; }
+  #page2 .section-header { flex-direction: column; gap: 16px; }
+  #page2 .section-header p { text-align: left; }
+  #page4 .journal-grid { grid-template-columns: 1fr; }
+  #page5 .philosophy { grid-template-columns: 1fr; gap: 60px; padding: 80px 6%; }
+  #page5 .stats-luxury { flex-direction: column; gap: 40px; }
+  #page5 .hero-nav { position: relative; top: 0; left: 0; right: 0; flex-direction: column; gap: 16px; }
+  #page3 .hero { padding: 40px 24px; }
+  #page3 .features-terminal { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- DESIGN SWITCHER -->
+<div class="design-switcher">
+  <span class="label">Design</span>
+  <button onclick="switchDesign(1)" id="btn1">1<span class="tooltip">Neural Organic</span></button>
+  <button onclick="switchDesign(2)" id="btn2">2<span class="tooltip">Swiss Brutalist</span></button>
+  <button onclick="switchDesign(3)" id="btn3">3<span class="tooltip">Terminal Retro</span></button>
+  <button onclick="switchDesign(4)" id="btn4">4<span class="tooltip">Warm Journal</span></button>
+  <button onclick="switchDesign(5)" id="btn5">5<span class="tooltip">Luxury Minimal</span></button>
+</div>
+
+<!-- ============================================
+     PAGE 1 — NEURAL ORGANIC
+     ============================================ -->
+<div id="page1" class="page">
+  <canvas class="bg-canvas" id="neuralCanvas"></canvas>
+  <div class="content">
+    <section class="hero">
+      <div class="hero-badge"><span class="dot"></span> Now in public beta</div>
+      <h1>Your mind,<br>woven together.</h1>
+      <p class="hero-sub">Mindweave connects your thoughts, ideas, and knowledge into a living network that thinks with you — not just stores for you.</p>
+      <div class="cta-row">
+        <button class="btn-primary">Start Weaving — Free</button>
+        <button class="btn-secondary">Watch Demo</button>
+      </div>
+    </section>
+
+    <section class="neural-section">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Built for how your<br>brain actually works.</h2>
+      <p class="section-desc">Not folders. Not tags. A living graph of your thinking that surfaces connections you didn't know existed.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Neural Linking</h3>
+          <p>Every note automatically connects to related ideas. Your knowledge base grows smarter with every entry.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Capture</h3>
+          <p>Capture thoughts in under 2 seconds. Voice, text, images — whatever comes naturally in the moment.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔮</div>
+          <h3>AI Synthesis</h3>
+          <p>Ask questions across your entire knowledge base. Get synthesized answers drawn from your own notes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌊</div>
+          <h3>Flow States</h3>
+          <p>Distraction-free writing environments that adapt to your focus level and time of day.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Bi-directional Links</h3>
+          <p>See what connects to what. Navigate your knowledge like a graph, not a file tree.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Private by Design</h3>
+          <p>End-to-end encryption. Your thoughts stay yours. On-device AI processing available.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-number">2.4M+</div><div class="stat-label">Active Thinkers</div></div>
+      <div class="stat"><div class="stat-number">180M</div><div class="stat-label">Notes Created</div></div>
+      <div class="stat"><div class="stat-number">99.9%</div><div class="stat-label">Uptime</div></div>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 Mindweave. Think deeper.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 2 — SWISS BRUTALIST
+     ============================================ -->
+<div id="page2" class="page">
+  <section class="hero">
+    <div class="hero-top">
+      <div class="logo-mark">MIND<span>WEAVE</span></div>
+      <ul class="nav-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="hero-left">
+      <h1>Think<br><em>clearer.</em><br>Build faster.</h1>
+      <p>A second brain for people who refuse to forget anything. Capture, connect, and create — without the clutter.</p>
+      <button class="btn-brutal">Get Started <span class="arrow">→</span></button>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="grid-overlay"></div>
+        <div class="note-block">thought: the best ideas come at 3am</div>
+        <div class="note-block">→ linked to: sleep cycles & creativity</div>
+        <div class="note-block">project: redesign onboarding flow</div>
+        <div class="note-block">quote: "simplicity is the ultimate sophistication"</div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <span class="scroll-hint">Scroll to explore ↓</span>
+      <span style="font-size: 0.8rem; color: #999;">v2.4.1 — 12 new features</span>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="section-header">
+      <h2>Everything you<br><span>need.</span> Nothing<br>you don't.</h2>
+      <p>Powerful enough for complex thinking. Simple enough to start in seconds.</p>
+    </div>
+    <div class="brutal-grid">
+      <div class="brutal-card">
+        <div class="card-num">01</div>
+        <h3>Capture</h3>
+        <p>Text, voice, images, web clips. Capture anything in any format, from any device.</p>
+      </div>
+      <div class="brutal-card">
+        <div class="card-num">02</div>
+        <h3>Connect</h3>
+        <p>AI-powered linking finds relationships between your notes that you'd never spot manually.</p>
+      </div>
+      <div class="brutal-card">
+        <div class="card-num">03</div>
+        <h3>Create</h3>
+        <p>Turn scattered notes into structured documents, presentations, and actionable plans.</p>
+      </div>
+      <div class="brutal-card">
+        <div class="card-num">04</div>
+        <h3>Search</h3>
+        <p>Semantic search understands intent. Find anything by meaning, not just keywords.</p>
+      </div>
+      <div class="brutal-card">
+        <div class="card-num">05</div>
+        <h3>Share</h3>
+        <p>Collaborate in real-time. Share specific notes or entire knowledge graphs with your team.</p>
+      </div>
+      <div class="brutal-card">
+        <div class="card-num">06</div>
+        <h3>Evolve</h3>
+        <p>Your second brain learns your patterns and suggests improvements to your thinking.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>© 2025 Mindweave</p>
+    <p>Designed with intention.</p>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 3 — TERMINAL RETRO
+     ============================================ -->
+<div id="page3" class="page">
+  <div class="content">
+    <div class="terminal-header">
+      <div class="terminal-dots"><span></span><span></span><span></span></div>
+      <span class="terminal-title">mindweave — bash — 80×24</span>
+    </div>
+
+    <section class="hero">
+      <div class="prompt">whoami</div>
+      <h1>Mindweave<span class="cursor"></span></h1>
+      <p class="hero-desc">
+        The command-line-native second brain for developers, researchers, and thinkers who prefer their tools as raw as their thoughts.
+      </p>
+
+      <div class="cmd-line">
+        <span class="prompt-char">$</span>
+        <span class="cmd-text">mindweave init --brain</span>
+        <span class="cursor-block"></span>
+      </div>
+
+      <div class="output-block">
+        <div class="line dim">Initializing Mindweave v2.4.1...</div>
+        <div class="line bright">✓ Neural engine loaded</div>
+        <div class="line bright">✓ Knowledge graph: 0 nodes, 0 edges</div>
+        <div class="line bright">✓ AI synthesis: ready</div>
+        <div class="line accent">→ Your second brain is online. Start thinking.</div>
+      </div>
+    </section>
+
+    <section class="features-terminal">
+      <h2>ls /features</h2>
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">⌘</div>
+            <h3>CLI Native</h3>
+          </div>
+          <p>Full command-line interface. Pipe, grep, and filter your thoughts like any other data stream.</p>
+        </div>
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">⊞</div>
+            <h3>Graph Database</h3>
+          </div>
+          <p>Every note is a node. Every connection is an edge. Query your knowledge with Cypher-like syntax.</p>
+        </div>
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">⚙</div>
+            <h3>Plugin System</h3>
+          </div>
+          <p>Extend with Node.js plugins. Automate workflows, sync with tools, build custom integrations.</p>
+        </div>
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">◈</div>
+            <h3>Local-First</h3>
+          </div>
+          <p>Everything runs locally. Optional sync. Your data never leaves your machine unless you want it to.</p>
+        </div>
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">⊡</div>
+            <h3>Markdown Native</h3>
+          </div>
+          <p>Plain text Markdown files. Git-compatible. Future-proof. No vendor lock-in, ever.</p>
+        </div>
+        <div class="term-card">
+          <div class="card-header">
+            <div class="card-icon">⏣</div>
+            <h3>AI Assistant</h3>
+          </div>
+          <p>On-device AI that understands your notes. Summarize, connect, and generate — all locally.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>© 2025 Mindweave</span>
+      <span>uptime: 99.97% | nodes: 180M+</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 4 — WARM JOURNAL
+     ============================================ -->
+<div id="page4" class="page">
+  <section class="hero">
+    <div class="journal-lines"></div>
+    <div class="hero-content">
+      <p class="handwritten">dear mind,</p>
+      <h1>A place for your<br><em>brilliant thoughts</em></h1>
+      <p class="hero-sub">Mindweave is where your ideas feel at home. A gentle, beautiful space to capture everything that matters — and discover connections you never expected.</p>
+      <button class="btn-warm">Begin Your Journey ✦</button>
+    </div>
+  </section>
+
+  <section class="journal-section">
+    <div class="section-intro">
+      <h2>Everything you need to think beautifully</h2>
+      <p>Tools that feel as natural as thinking itself.</p>
+    </div>
+    <div class="journal-grid">
+      <div class="journal-card">
+        <span class="card-emoji">🌿</span>
+        <h3>Gentle Capture</h3>
+        <p>Write, speak, or sketch. Capture ideas the way they come to you — no friction, no forced structure.</p>
+      </div>
+      <div class="journal-card">
+        <span class="card-emoji">🕯️</span>
+        <h3>Warm Reminders</h3>
+        <p>Revisit old notes with spaced repetition. Your past insights resurface when they matter most.</p>
+      </div>
+      <div class="journal-card">
+        <span class="card-emoji">🌸</span>
+        <h3>Living Connections</h3>
+        <p>Watch your ideas bloom and connect. See the garden of your mind grow richer over time.</p>
+      </div>
+      <div class="journal-card">
+        <span class="card-emoji">📖</span>
+        <h3>Beautiful Writing</h3>
+        <p>Distraction-free editor with gorgeous typography. Writing feels like a conversation with yourself.</p>
+      </div>
+      <div class="journal-card">
+        <span class="card-emoji">🌙</span>
+        <h3>Daily Reflections</h3>
+        <p>End each day with guided reflection. Track your mood, gratitude, and key learnings.</p>
+      </div>
+      <div class="journal-card">
+        <span class="card-emoji">✨</span>
+        <h3>AI Companion</h3>
+        <p>A thoughtful AI that helps you explore ideas, not just store them. Like a wise conversation partner.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="testimonial">
+      <blockquote>"Mindweave changed how I think. It's not just a note app — it's like having a conversation with my future self."</blockquote>
+      <cite>— Sarah Chen, Creative Director</cite>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>© 2025 Mindweave — Made with care, for curious minds.</p>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 5 — LUXURY MINIMAL
+     ============================================ -->
+<div id="page5" class="page">
+  <section class="hero">
+    <nav class="hero-nav">
+      <div class="brand">Mind<span>weave</span></div>
+      <ul class="nav-minimal">
+        <li><a href="#">Philosophy</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="hero-body">
+      <p class="eyebrow">The Art of Thinking</p>
+      <h1>Clarity is the<br>ultimate <em>luxury.</em></h1>
+      <p class="hero-desc">A refined environment for serious thinking. Where every detail is considered, and nothing distracts from what matters.</p>
+      <button class="btn-luxury">
+        Discover Mindweave
+        <span class="line"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <div class="philosophy-left">
+      <h2>Designed for those who think deeply.</h2>
+      <p>We believe your thinking deserves an environment as refined as your ideas. Every pixel, every interaction, every moment — crafted with intention.</p>
+    </div>
+    <div class="philosophy-right">
+      <div class="philosophy-item">
+        <p class="item-label">01 — Capture</p>
+        <h3>Effortless Input</h3>
+        <p>Write, speak, or paste. Your thoughts flow in without resistance.</p>
+      </div>
+      <div class="philosophy-item">
+        <p class="item-label">02 — Connect</p>
+        <h3>Intelligent Graph</h3>
+        <p>Every idea linked to every other. Discover relationships you never intended.</p>
+      </div>
+      <div class="philosophy-item">
+        <p class="item-label">03 — Synthesize</p>
+        <h3>AI That Understands</h3>
+        <p>Not just search — true understanding. Ask questions, get wisdom from your own mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-luxury">
+    <div class="stat-luxury"><div class="number">2.4M</div><div class="label">Thinkers</div></div>
+    <div class="stat-luxury"><div class="number">180M</div><div class="label">Ideas Captured</div></div>
+    <div class="stat-luxury"><div class="number">∞</div><div class="label">Possibilities</div></div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Mindweave</p>
+    <p>Less noise. More thinking.</p>
+  </div>
+</div>
+
+<script>
+// ============================================
+// ROUTER & DESIGN SWITCHER
+// ============================================
+function showPage(num) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.design-switcher button').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('page' + num);
+  if (page) {
+    page.classList.add('active');
+    const btn = document.getElementById('btn' + num);
+    if (btn) btn.classList.add('active');
+  }
+  // Initialize neural canvas if page 1
+  if (num === 1) initNeuralCanvas();
+}
+
+function switchDesign(num) {
+  showPage(num);
+  history.replaceState(null, null, '#/' + num);
+}
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#/', '');
+  const num = parseInt(hash);
+  if (num >= 1 && num <= 5) showPage(num);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#/', '');
+  const num = parseInt(hash) || 1;
+  showPage(num);
+});
+
+// ============================================
+// NEURAL CANVAS ANIMATION (Page 1)
+// ============================================
+let neuralInitialized = false;
+let animFrameId = null;
+
+function initNeuralCanvas() {
+  if (neuralInitialized) return;
+  neuralInitialized = true;
+
+  const canvas = document.getElementById('neuralCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const nodes = [];
+  const nodeCount = Math.min(80, Math.floor(window.innerWidth * window.innerHeight / 15000));
+
+  for (let i = 0; i < nodeCount; i++) {
+    nodes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const opacity = (1 - dist / 150) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(124, 58, 237, ${opacity})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw and update nodes
+    for (const node of nodes) {
+      node.x += node.vx;
+      node.y += node.vy;
+
+      if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+      if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(167, 139, 250, ${node.opacity})`;
+      ctx.fill();
+
+      // Glow
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius * 4, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(124, 58, 237, ${node.opacity * 0.1})`;
+      ctx.fill();
+    }
+
+    animFrameId = requestAnimationFrame(animate);
+  }
+  animate();
+}
+</script>
+</body>
+</html>

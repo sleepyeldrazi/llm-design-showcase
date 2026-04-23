@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro | Second Brain</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --fg: #00ff41; /* Classic Matrix Green */
+            --accent: #ff00ff;
+            --border: #333;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background: var(--bg);
+            color: var(--fg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            background: #000;
+            border-bottom: 2px solid var(--fg);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-shadow: 0 0 5px var(--fg);
+        }
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.06), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .terminal-window {
+            border: 2px solid var(--fg);
+            padding: 1rem;
+            background: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--fg);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .command {
+            margin-bottom: 1rem;
+        }
+        .command::before {
+            content: "> ";
+        }
+        .nav-switch {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-btn {
+            background: #000;
+            color: var(--fg);
+            border: 1px solid var(--fg);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--fg);
+            color: #000;
+        }
+        .nav-btn.active {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <header>
+        <div class="logo">SYSTEM_V2.4.0</div>
+        <div class="status">STATUS: ONLINE</div>
+    </header>
+    <main>
+        <div class="terminal-window">
+            <h1>BRAIN_OS_LOADED...</h1>
+            <p>Initializing neural links...</p>
+            <p>Accessing memory sectors...</p>
+            <p>Welcome, User. <span class="cursor"></span></p>
+        </div>
+        
+        <div class="command">ls -R /memories/core</div>
+        <div class="command">cat /notes/important.txt</div>
+        <div class="command" style="color: var(--accent)">sudo connect --brain</div>
+
+        <div style="margin-top: 3rem; border-top: 1px dashed var(--fg); padding-top: 1rem;">
+            <p>RETRO-FUTURIST INTERFACE READY.</p>
+            <p>Capture thoughts at the speed of light.</p>
+        </div>
+    </main>
+    <div class="nav-switch">
+        <a href="../index.html" class="nav-btn">BACK</a>
+        <a href="one.html" class="nav-btn">01</a>
+        <a href="two.html" class="nav-btn">02</a>
+        <a href="three.html" class="nav-btn active">03</a>
+        <a href="four.html" class="nav-btn">04</a>
+        <a href="five.html" class="nav-btn">05</a>
+    </div>
+</body>
+</html>

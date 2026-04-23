@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 2: Cyber-Zen (Dark/Glow)</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #a0a0a0;
+            --accent: #00f2ff;
+            --glow: rgba(0, 242, 255, 0.3);
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(60px);
+        }
+        h1 {
+            font-size: 4rem;
+            color: #fff;
+            letter-spacing: -2px;
+            text-shadow: 0 0 20px var(--glow);
+            margin: 0;
+        }
+        p {
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 1.5rem auto;
+            color: #666;
+        }
+        .cta {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.4s;
+            box-shadow: 0 0 10px transparent;
+        }
+        .cta:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px var(--accent);
+        }
+        .switch-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .switch-btn:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <h1>SYNAPSE</h1>
+    <p>The neural layer for your digital existence. Quietly, efficiently, eternally.</p>
+    <a href="#" class="cta">Initialize Core</a>
+    <a href="../index.html" class="switch-btn">Switch Designs</a>
+</body>
+</html>

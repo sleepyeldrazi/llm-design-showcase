@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noir | Second Brain</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --fg: #d4d4d4;
+            --accent: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.9);
+            --dim: #444;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--fg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1;
+        }
+        header {
+            padding: 3rem 2rem;
+            text-align: left;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo {
+            font-size: 1rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: normal;
+            margin: 0;
+            font-style: italic;
+            letter-spacing: -0.02em;
+        }
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-top: 2rem;
+            color: #888;
+            max-width: 500px;
+        }
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--fg);
+            margin: 2rem 0;
+        }
+        .feature {
+            margin-bottom: 4rem;
+        }
+        .feature h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--dim);
+            margin-bottom: 1rem;
+        }
+        .feature p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        .nav-switch {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .nav-btn {
+            background: transparent;
+            color: var(--dim);
+            border: 1px solid #1a1a1a;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-family: serif;
+            font-size: 0.7rem;
+            transition: all 0.5s ease;
+        }
+        .nav-btn:hover {
+            color: var(--fg);
+            border-color: var(--dim);
+        }
+        .nav-btn.active {
+            color: var(--fg);
+            border-color: var(--fg);
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <header>
+        <div class="logo">Memoirs of a Shadow</div>
+    </header>
+    <main>
+        <h1>The Unspoken.</h1>
+        <div class="divider"></div>
+        <div class="hero-text">
+            Everything you think, everything you feel, everything you've lost. Captured in the quiet.
+        </div>
+        
+        <div class="feature" style="margin-top: 6rem;">
+            <h2>The Archive</h2>
+            <p>A repository for the fleeting thoughts that define us.</p>
+        </div>
+
+        <div class="feature">
+            <h2>The Silence</h2>
+            <p>No notifications. No noise. Just the weight of your own presence.</p>
+        </div>
+    </main>
+    <div class="nav-switch">
+        <a href="../index.html" class="nav-btn">BACK</a>
+        <a href="one.html" class="nav-btn">01</a>
+        <a href="two.html" class="nav-btn">02</a>
+        <a href="three.html" class="nav-btn">03</a>
+        <a href="four.html" class="nav-btn">04</a>
+        <a href="five.html" class="nav-btn">05</a>
+    </div>
+</body>
+</html>

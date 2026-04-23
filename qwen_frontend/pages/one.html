@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 1: Brutalist Minimalist</title>
+    <style>
+        :root {
+            --bg: #f0f0f0;
+            --text: #000;
+            --accent: #ff3e00;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        header {
+            border: 4px solid var(--text);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content {
+            flex-grow: 1;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 5rem;
+            line-height: 0.9;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .hero-text {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .nav-container {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--text);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .switch-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span>NEURAL_ARCHIVE_V1</span>
+        <span>[STATUS: ACTIVE]</span>
+    </header>
+    <main class cap="content">
+        <h1>MIND<br>EXPANSION</h1>
+        <p class="hero-text">Capture everything. Forget nothing. The raw architecture of thought.</p>
+        <div style="margin-top: 2rem; border-left: 8px solid var(--accent); padding-left: 1rem;">
+            <p>A brutalist approach to knowledge management. No fluff. Just structure.</p>
+        </div>
+    </main>
+    <div class="nav-container">
+        <a href="../index.html" class="btn">Back to Selector</a>
+    </div>
+    <a href="../index.html" class="switch-btn">Switch Designs</a>
+</body>
+</html>

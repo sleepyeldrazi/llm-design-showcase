@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIND — Second Brain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --text: #2B2B2B;
+      --accent: #C5A47E;
+      --border: #E8E8E4;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .switcher {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .switcher a {
+      font-size: 11px;
+      text-decoration: none;
+      color: var(--text);
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+    .switcher a:hover, .switcher a.active {
+      opacity: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 0;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 12vw, 120px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1;
+      margin-bottom: 40px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      line-height: 2;
+      max-width: 480px;
+      color: #666;
+    }
+
+    /* Features */
+    .features {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 80px;
+    }
+
+    .feature h2 {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .feature p {
+      font-size: 12px;
+      line-height: 2;
+      color: #888;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .cta button {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 20px 60px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .cta button:hover {
+      background: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      font-size: 11px;
+      color: #CCC;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo">MIND</div>
+      <div class="switcher">
+        <a href="../slash-two/index.html">II</a>
+        <a href="../slash-three/index.html">III</a>
+        <a href="../slash-four/index.html">IV</a>
+        <a href="../slash-five/index.html">V</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Build a Second Brain</h1>
+      <p>Collect, organize, and connect your thoughts. A personal knowledge system that grows with you.</p>
+    </section>
+
+    <section class="features">
+      <div class="features-grid">
+        <div class="feature">
+          <h2>Collect</h2>
+          <p>Save everything that matters. Capture notes, links, and ideas before they slip away.</p>
+        </div>
+        <div class="feature">
+          <h2>Organize</h2>
+          <p>Build a structure that makes sense. Nested, connected, and always findable.</p>
+        </div>
+        <div class="feature">
+          <h2>Connect</h2>
+          <p>See how ideas relate. Your brain needs connections. Make your knowledge visible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <button>Start Building</button>
+    </section>
+
+    <footer>
+      <p>MIND — A Second Brain for Your Mind</p>
+    </footer>
+  </div>
+</body>
+</html>

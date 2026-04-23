@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen | Second Brain</title>
+    <style>
+        :root {
+            --bg: #fdfcf8;
+            --fg: #2d3436;
+            --accent: #78e08f;
+            --text-muted: #636e72;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: var(--bg);
+            color: var(--fg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .logo {
+            font-style: italic;
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+        }
+        main {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .zen-quote {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 4rem;
+        }
+        .feature-card {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .feature-card h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .nav-switch {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-btn {
+            background: transparent;
+            color: var(--fg);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        .nav-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">S O L I T U D E</div>
+    </header>
+    <main>
+        <h1>Presence.</h1>
+        <div class="zen-quote">
+            "The mind is like water. When it is agitated, it is difficult to see. When it is still, everything becomes clear."
+        </div>
+        <div class="feature-card">
+            <h2>Clarity of Thought</h2>
+            <p>A space designed to be empty until you need it. No distractions, only your essence.</p>
+        </div>
+        <div class="feature-card">
+            <h2>Mindful Capture</h2>
+            <p>Write slowly. Think deeply. Capture only what matters.</p>
+        </div>
+    </main>
+    <div class="nav-switch">
+        <a href="../index.html" class="nav-btn">BACK</a>
+        <a href="one.html" class="nav-btn">01</a>
+        <a href="two.html" class="nav-btn active">02</a>
+        <a href="three.html" class="nav-btn">03</a>
+        <a href="four.html" class="nav-btn">04</a>
+        <a href="five.html" class="nav-btn">05</a>
+    </div>
+</body>
+</html>

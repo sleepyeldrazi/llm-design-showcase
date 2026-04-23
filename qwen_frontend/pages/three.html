@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 3: Editorial/Magazine</title>
+    <style>
+        :root {
+            --bg: #faf9f6;
+            --text: #1a1a1a;
+            --accent: #d44d32;
+            --serif: 'Georgia', serif;
+            --sans: 'Helvetica', sans-serif;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 3rem;
+            box-sizing: border-box;
+        }
+        header {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: var(--serif);
+            font-size: 5.5rem;
+            font-weight: normal;
+            line-height: 1;
+            margin: 0 0 2rem 0;
+            letter-spacing: -2px;
+        }
+        .subtitle {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .grid-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .grid-item h3 {
+            font-family: var(--sans);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .switch-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            color: #999;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        .switch-btn:hover {
+            color: var(--text);
+        }
+        .footer-nav {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ccc;
+        }
+        .cta-link {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span>Vol. 01 — THE ARCHIVE</span>
+        <span>EDITION 2026</span>
+    </header>
+    <main>
+        <h1>The Art of Thinking.</h1>
+        <p class="subtitle">A curated space for your most profound thoughts.</p>
+        
+        <div class="grid">
+            <div class="grid-item">
+                <h3>The Method</h3>
+                <p>We believe in the power of structured reflection. A second brain isn't just storage; it's a dialogue with yourself.</p>
+            </div>
+            <div class="grid-item">
+                <h3>The Vision</h3>
+                <p>Transforming chaotic input into meaningful insight through elegant, minimal design and deep focus.</p>
+            </div>
+        </div>
+
+        <div class="footer-nav">
+            <a href="#" class="cta-link">Explore the Journal</a>
+        </div>
+    </main>
+    <a href="../index.html" class="switch-btn">Back to index</a>
+</body>
+</html>

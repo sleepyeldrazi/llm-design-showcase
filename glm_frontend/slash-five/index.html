@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIND — Second Brain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0D0D0D;
+      --text: #0F0;
+      --accent: #0F0;
+      --accent-dim: #0F040;
+      --border: #0F0;
+      --bg-gradient: linear-gradient(180deg, #0D0D0D 0%, #1A0D1A 50%, #0D0D0D 100%);
+      --neon-glow: 0 0 20px var(--accent-dim), 0 0 40px var(--accent-dim);
+      --font-display: 'Orbitron', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Starfield Background */
+    .starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, var(--accent) 100%, transparent 0),
+        radial-gradient(2px 2px at 40px 70px, var(--accent) 100%, transparent 0),
+        radial-gradient(2px 2px at 90px 160px, var(--accent) 100%, transparent 0),
+        radial-gradient(2px 2px at 130px 40px, var(--accent) 100%, transparent 0),
+        radial-gradient(2px 2px at 200px 100px, var(--accent) 100%, transparent 0),
+        radial-gradient(2px 2px at 260px 180px, var(--accent) 100%, transparent 0);
+      background-repeat: repeat;
+      background-size: 300px 300px;
+      opacity: 0.6;
+      animation: twinkle 4s ease-in-out infinite;
+      animation-delay: 0s, 1s, 2s, 0.5s, 1.5s, 2.5s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* Navigation */
+    nav {
+      padding: 50px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 16px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-dim);
+    }
+
+    .switcher {
+      display: flex;
+      gap: 30px;
+    }
+
+    .switcher a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: rgba(0, 255, 0, 0.4);
+      transition: all 0.3s;
+    }
+
+    .switcher a:hover, .switcher a.active {
+      text-shadow: 0 0 10px var(--accent-dim);
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 10vw, 160px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 30px;
+      letter-spacing: -4px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      line-height: 2;
+      max-width: 500px;
+      color: rgba(0, 255, 0, 0.7);
+      text-shadow: 0 0 10px var(--accent-dim);
+    }
+
+    /* Cyber Divider */
+    .cyber-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 60px 0;
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+
+    .feature {
+      border: 1px solid var(--accent-dim);
+      padding: 40px;
+    }
+
+    .feature h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(0, 255, 0, 0.7);
+    }
+
+    /* CTA */
+    .cta {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .cta button {
+      font-family: var(--font-display);
+      font-size: 14px;
+      padding: 20px 60px;
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--accent);
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .cta button:hover {
+      background: var(--accent);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(0, 255, 0, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+  <div class="container">
+    <nav>
+      <div class="logo">MIND</div>
+      <div class="switcher">
+        <a href="../slash-one/index.html">I</a>
+        <a href="../slash-two/index.html">II</a>
+        <a href="../slash-three/index.html">III</a>
+        <a href="../slash-four/index.html">IV</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>KNOWLEDGE<br>SYNAPSE</h1>
+      <p>Build a digital brain. Connect your thoughts. Navigate your knowledge.</p>
+    </section>
+
+    <div class="cyber-divider"></div>
+
+    <section class="features">
+      <div class="features-grid">
+        <div class="feature">
+          <h2>Collect</h2>
+          <p>Save ideas. Capture thoughts. Your neural net needs input.</p>
+        </div>
+        <div class="feature">
+          <h2>Organize</h2>
+          <p>Build connections. Your brain needs structure. Your knowledge needs order.</p>
+        </div>
+        <div class="feature">
+          <h2>Connect</h2>
+          <p>See patterns. Make ideas talk. Your brain needs dialogue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <button>Initialize System</button>
+    </section>
+
+    <footer>
+      <p>SYSTEM READY — KNOWLEDGE SYNAPSE</p>
+    </footer>
+  </div>
+</body>
+</html>

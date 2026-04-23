@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Brain - Iteration 5: Playful/Brutalist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .neo-brutalist {
+            box-shadow: 8px 8px 0px 0px #000;
+            border: 3px solid #000;
+        }
+        .neo-brutalist-hover:hover {
+            box-shadow: 4px 4px 0px 0px #000;
+            transform: translate(2px, 2px);
+        }
+        .neo-brutalist-hover:active {
+            box-shadow: 0px 0px 0px 0px #000;
+            transform: translate(8px, 8px);
+        }
+    </style>
+</head>
+<body class="bg-[#FFDE00] text-black min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+    <nav class="fixed top-6 right-6 flex gap-2 bg-white border-4 border-black p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <a href="one.html" class="px-3 py-1 text-xs font-bold hover:bg-stone-200">1</a>
+        <a href="two.html" class="px-3 py-1 text-xs font-bold hover:bg-stone-200">2</a>
+        <a href="three.html" class="px-3 py-1 text-xs font-bold hover:bg-stone-200">3</a>
+        <a href="four.html" class="px-3 py-1 text-xs font-bold hover:bg-stone-200">4</a>
+        <a href="five.html" class="px-3 py-1 text-xs font-bold hover:bg-stone-200">5</a>
+    </nav>
+
+    <div class="max-w-lg text-center">
+        <div class="inline-block bg-white border-4 border-black px-4 py-2 mb-6 rotate-[-2deg] neo-brutalist">
+            <span class="font-bold text-xl">BRAIN_DUMP.EXE</span>
+        </div>
+        
+        <h1 class="text-7xl font-black tracking-tighter mb-8 leading-none">GET IT OUT OF YOUR HEAD!</h1>
+        
+        <p class="text-xl font-bold mb-12 leading-tight">The messiest, fastest, most brutal way to capture every single thought.</p>
+
+        <div class="bg-pink-400 p-8 neo-brutalist mb-12">
+            <div class="bg-white border-2 border-black p-4 mb-4 text-left">
+                <div class="h-3 w-3/4 bg-black mb-2"></div>
+                <div class="h-3 w-1/2 bg-black"></div>
+            </div>
+            <div class="bg-blue-400 border-2 border-black p-4 text-left">
+                <div class="h-3 w-full bg-black mb-2"></div>
+                <div class="h-3 w-2/3 bg-black"></div>
+            </div>
+        </div>
+
+        <button class="w-full py-6 bg-[#00FF41] text-black text-3xl font-black neo-brutalist neo-brutalist-hover transition-all uppercase">
+            START DUMPING
+        </button>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full h-12 bg-black"></div>
+</body>
+</html>

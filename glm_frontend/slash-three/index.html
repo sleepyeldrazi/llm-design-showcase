@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIND — Second Brain</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Cormorant+Garamond:wght@300;400&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F3EE;
+      --text: #2C241C;
+      --accent: #8B7355;
+      --accent-light: #D4C4B0;
+      --accent-soft: #F4F1EB;
+      --border: #E8E4DA;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Cormorant Garamond', serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 50px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .switcher {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .switcher a {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--text);
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+    .switcher a:hover, .switcher a.active {
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 120px 0 80px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 10vw, 100px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 2;
+      max-width: 500px;
+      color: #666;
+    }
+
+    /* Botanical Border */
+    .botanical {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+
+    .botanical::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--accent-light), transparent);
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+
+    .feature {
+      padding: 30px 0;
+    }
+
+    .feature h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      line-height: 2;
+      color: #888;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .cta button {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 15px 50px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: background 0.3s;
+    }
+
+    .cta button:hover {
+      background: var(--accent-light);
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 0;
+      text-align: center;
+      font-size: 10px;
+      color: #AAA;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo">MIND</div>
+      <div class="switcher">
+        <a href="../slash-one/index.html">I</a>
+        <a href="../slash-two/index.html">II</a>
+        <a href="../slash-four/index.html">IV</a>
+        <a href="../slash-five/index.html">V</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Grow Your Mind</h1>
+      <p>A note-taking system as natural as a garden. Cultivate your knowledge, grow your thinking.</p>
+    </section>
+
+    <section class="botanical"></section>
+
+    <section class="features">
+      <div class="features-grid">
+        <div class="feature">
+          <h2>Plant Ideas</h2>
+          <p>Every thought is a seed. Capture them before they fade. Your garden needs every seed.</p>
+        </div>
+        <div class="feature">
+          <h2>Nourish Notes</h2>
+          <p>Organize with care. Nested folders, connected ideas. Like roots intertwining.</p>
+        </div>
+        <div class="feature">
+          <h2>Bloom Knowledge</h2>
+          <p>See your growth. Your mind expands. Connections form like flowers opening.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <button>Start Growing</button>
+    </section>
+
+    <footer>
+      <p>MIND — A Living Knowledge System</p>
+    </footer>
+  </div>
+</body>
+</html>

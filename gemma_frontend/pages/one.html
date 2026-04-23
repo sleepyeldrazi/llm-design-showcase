@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brutalist | Second Brain</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #000000;
+            --accent: #ff0000;
+            --border: #000000;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            border-bottom: 4px solid var(--border);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+        }
+        .nav-switch {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-btn {
+            background: var(--bg);
+            color: var(--fg);
+            border: 3px solid var(--border);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            box-shadow: 4px 4px 0px var(--border);
+        }
+        .nav-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--border);
+        }
+        .nav-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--border);
+        }
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .hero {
+            grid-column: 1 / -1;
+            border: 4px solid var(--border);
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            background: var(--fg);
+            color: var(--bg);
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+        }
+        .content-block {
+            border: 4px solid var(--border);
+            padding: 2rem;
+            background: #f0f0f0;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            border: 3px solid var(--border);
+            box-shadow: 6px 6px 0px var(--border);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BRAIN<br>01</div>
+        <div style="font-weight: 900; text-transform: uppercase;">System/Brutalist</div>
+    </header>
+    <main>
+        <div class="hero">
+            <h1>RAW<br>DATA.</h1>
+            <div class="tagline">UNFILTERED COGNITION</div>
+            <p style="font-size: 1.2rem; margin-top: 2rem; max-width: 500px;">Stop decorating your thoughts. Start structuring them. Pure, raw, and unyielding.</p>
+            <a href="#" class="cta-button">GET STARTED</a>
+        </div>
+        <div class="content-block">
+            <ul class="feature-list">
+                <li>NO FRILLS</li>
+                <li>NO DELAY</li>
+                <li>NO EXCUSES</li>
+            </ul>
+        </div>
+        <div class="content-block" style="background: var(--accent); color: white;">
+            <h2 style="font-size: 2rem;">HARDWARE OPTIMIZED</h2>
+            <p>Built for speed. Built for focus. Built for you.</p>
+        </div>
+    </main>
+    <div class="nav-switch">
+        <a href="../index.html" class="nav-btn">BACK</a>
+        <a href="one.html" class="nav-btn active">01</a>
+        <a href="two.html" class="nav-btn">02</a>
+        <a href="three.html" class="nav-btn">03</a>
+        <a href="four.html" class="nav-btn">04</a>
+        <a href="five.html" class="nav-btn">05</a>
+    </div>
+</body>
+</html>

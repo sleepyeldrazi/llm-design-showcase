@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecondBrain — Your Notes, Reimagined</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Design Switcher -->
+    <div class="design-switcher" id="designSwitcher">
+        <span class="switcher-label">Design:</span>
+        <button class="switcher-btn active" data-design="1">1</button>
+        <button class="switcher-btn" data-design="2">2</button>
+        <button class="switcher-btn" data-design="3">3</button>
+        <button class="switcher-btn" data-design="4">4</button>
+        <button class="switcher-btn" data-design="5">5</button>
+        <span class="switcher-hint">← →</span>
+    </div>
+
+    <!-- ==================== DESIGN 1: Minimal Zen ==================== -->
+    <section class="design-page" id="design-1">
+        <nav class="d1-nav">
+            <div class="d1-logo">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="#1a1a1a" stroke-width="1.5"/>
+                    <path d="M10 14h8M14 10v8" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>secondbrain</span>
+            </div>
+            <div class="d1-nav-links">
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="d1-nav-cta">
+                <a href="#" class="d1-btn-outline">Sign in</a>
+                <a href="#" class="d1-btn-primary">Get started</a>
+            </div>
+        </nav>
+
+        <div class="d1-hero">
+            <div class="d1-hero-content">
+                <div class="d1-badge">Now in public beta</div>
+                <h1 class="d1-title">Your thoughts,<br>organized beautifully.</h1>
+                <p class="d1-subtitle">A note-taking app that thinks with you. Capture ideas, connect concepts, and build your personal knowledge base — all in one fluid workspace.</p>
+                <div class="d1-cta-group">
+                    <a href="#" class="d1-btn-large">Start for free →</a>
+                    <p class="d1-cta-note">No credit card required · Free plan available</p>
+                </div>
+            </div>
+            <div class="d1-hero-visual">
+                <div class="d1-mockup">
+                    <div class="d1-mockup-bar">
+                        <span class="d1-dot"></span>
+                        <span class="d1-dot"></span>
+                        <span class="d1-dot"></span>
+                    </div>
+                    <div class="d1-mockup-content">
+                        <div class="d1-sidebar">
+                            <div class="d1-sidebar-item active">🧠 Morning thoughts</div>
+                            <div class="d1-sidebar-item">📐 Project Alpha</div>
+                            <div class="d1-sidebar-item">🎨 Design ideas</div>
+                            <div class="d1-sidebar-item">📚 Reading notes</div>
+                            <div class="d1-sidebar-item">🗂️ Archive</div>
+                        </div>
+                        <div class="d1-editor">
+                            <div class="d1-editor-title">Morning thoughts</div>
+                            <div class="d1-editor-line"></div>
+                            <div class="d1-editor-line short"></div>
+                            <div class="d1-editor-line medium"></div>
+                            <div class="d1-editor-line"></div>
+                            <div class="d1-editor-line short"></div>
+                            <div class="d1-tag-row">
+                                <span class="d1-tag">#thinking</span>
+                                <span class="d1-tag">#morning</span>
+                                <span class="d1-tag">#ideas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d1-features">
+            <div class="d1-feature-card">
+                <div class="d1-feature-icon">⚡</div>
+                <h3>Lightning capture</h3>
+                <p>Save thoughts in under 2 seconds with keyboard shortcuts and quick capture.</p>
+            </div>
+            <div class="d1-feature-card">
+                <div class="d1-feature-icon">🔗</div>
+                <h3>Smart connections</h3>
+                <p>Automatically link related notes and discover hidden patterns in your thinking.</p>
+            </div>
+            <div class="d1-feature-card">
+                <div class="d1-feature-icon">🔍</div>
+                <h3>Full-text search</h3>
+                <p>Find anything instantly with powerful search across all your notes.</p>
+            </div>
+            <div class="d1-feature-card">
+                <div class="d1-feature-icon">🌿</div>
+                <h3>Grows with you</h3>
+                <p>From daily journal to knowledge base — adapts to how your mind works.</p>
+            </div>
+        </div>
+
+        <div class="d1-social-proof">
+            <p>Trusted by thinkers at</p>
+            <div class="d1-logos">
+                <span>Google</span>
+                <span>Stripe</span>
+                <span>Notion</span>
+                <span>Figma</span>
+                <span>Vercel</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DESIGN 2: Dark Mode / Developer ==================== -->
+    <section class="design-page" id="design-2">
+        <nav class="d2-nav">
+            <div class="d2-logo">
+                <span class="d2-logo-icon">◆</span>
+                <span>secondbrain</span>
+            </div>
+            <div class="d2-nav-links">
+                <a href="#">Docs</a>
+                <a href="#">API</a>
+                <a href="#">Changelog</a>
+                <a href="#">Community</a>
+            </div>
+            <div class="d2-nav-cta">
+                <a href="#" class="d2-btn-ghost">Log in</a>
+                <a href="#" class="d2-btn-primary">Get started</a>
+            </div>
+        </nav>
+
+        <div class="d2-hero">
+            <div class="d2-hero-left">
+                <div class="d2-badge">
+                    <span class="d2-badge-dot"></span>
+                    v2.0 is here — Graph view, AI summaries & more
+                </div>
+                <h1 class="d2-title">Build your<br><span class="d2-gradient-text">second brain</span></h1>
+                <p class="d2-subtitle">The note-taking system for people who think in code. Markdown-native, keyboard-first, and designed to scale with your knowledge.</p>
+                <div class="d2-cta-group">
+                    <a href="#" class="d2-btn-large">
+                        <span>npm install secondbrain</span>
+                        <span class="d2-copy-icon">📋</span>
+                    </a>
+                    <a href="#" class="d2-btn-secondary">Read the docs</a>
+                </div>
+                <div class="d2-stats">
+                    <div class="d2-stat">
+                        <span class="d2-stat-number">50K+</span>
+                        <span class="d2-stat-label">Developers</span>
+                    </div>
+                    <div class="d2-stat-divider"></div>
+                    <div class="d2-stat">
+                        <span class="d2-stat-number">2M+</span>
+                        <span class="d2-stat-label">Notes created</span>
+                    </div>
+                    <div class="d2-stat-divider"></div>
+                    <div class="d2-stat">
+                        <span class="d2-stat-number">99.9%</span>
+                        <span class="d2-stat-label">Uptime</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d2-hero-right">
+                <div class="d2-terminal">
+                    <div class="d2-terminal-header">
+                        <div class="d2-terminal-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="d2-terminal-title">secondbrain — zsh</span>
+                    </div>
+                    <div class="d2-terminal-body">
+                        <div class="d2-terminal-line">
+                            <span class="d2-prompt">❯</span>
+                            <span class="d2-command">sb new "Project ideas for Q3"</span>
+                        </div>
+                        <div class="d2-terminal-line d2-success">
+                            <span class="d2-prompt">✓</span>
+                            <span class="d2-output">Created note "Project ideas for Q3"</span>
+                        </div>
+                        <div class="d2-terminal-line">
+                            <span class="d2-prompt">❯</span>
+                            <span class="d2-command">sb link "Project ideas for Q3" → "Q2 retrospective"</span>
+                        </div>
+                        <div class="d2-terminal-line d2-success">
+                            <span class="d2-prompt">✓</span>
+                            <span class="d2-output">Linked 2 notes · Graph updated</span>
+                        </div>
+                        <div class="d2-terminal-line">
+                            <span class="d2-prompt">❯</span>
+                            <span class="d2-command">sb graph --open</span>
+                        </div>
+                        <div class="d2-terminal-line d2-success">
+                            <span class="d2-prompt">✓</span>
+                            <span class="d2-output">Opened knowledge graph (47 nodes, 123 edges)</span>
+                        </div>
+                        <div class="d2-terminal-line">
+                            <span class="d2-prompt">❯</span>
+                            <span class="d2-cursor">▊</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d2-features">
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">MD</div>
+                <h3>Markdown native</h3>
+                <p>Write in pure Markdown. Every note is a .md file you own and control.</p>
+            </div>
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">⌨</div>
+                <h3>Keyboard first</h3>
+                <p>Every action has a shortcut. Vim bindings, fuzzy find, and more.</p>
+            </div>
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">🔌</div>
+                <h3>Plugin system</h3>
+                <p>Extend with community plugins or build your own in TypeScript.</p>
+            </div>
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">📊</div>
+                <h3>Knowledge graph</h3>
+                <p>Visualize connections between your notes with an interactive graph.</p>
+            </div>
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">🤖</div>
+                <h3>AI assistant</h3>
+                <p>Summarize, expand, and brainstorm with built-in AI that respects your data.</p>
+            </div>
+            <div class="d2-feature-card">
+                <div class="d2-feature-badge">🔒</div>
+                <h3>End-to-end encrypted</h3>
+                <p>Your notes are encrypted at rest and in transit. Zero-knowledge architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DESIGN 3: Gradient / Modern SaaS ==================== -->
+    <section class="design-page" id="design-3">
+        <div class="d3-bg-orb d3-orb-1"></div>
+        <div class="d3-bg-orb d3-orb-2"></div>
+        <div class="d3-bg-orb d3-orb-3"></div>
+
+        <nav class="d3-nav">
+            <div class="d3-logo">
+                <div class="d3-logo-mark">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <defs>
+                            <linearGradient id="d3grad" x1="0" y1="0" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="16" cy="16" r="14" fill="url(#d3grad)"/>
+                        <path d="M11 16h10M16 11v10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span>SecondBrain</span>
+            </div>
+            <div class="d3-nav-links">
+                <a href="#">Product</a>
+                <a href="#">Solutions</a>
+                <a href="#">Resources</a>
+                <a href="#">Pricing</a>
+            </div>
+            <div class="d3-nav-cta">
+                <a href="#" class="d3-btn-ghost">Sign in</a>
+                <a href="#" class="d3-btn-primary">Start free trial</a>
+            </div>
+        </nav>
+
+        <div class="d3-hero">
+            <div class="d3-hero-content">
+                <div class="d3-badge">
+                    🚀 Introducing AI-powered knowledge graphs
+                </div>
+                <h1 class="d3-title">
+                    Think faster.<br>
+                    <span class="d3-gradient-text">Remember everything.</span>
+                </h1>
+                <p class="d3-subtitle">
+                    SecondBrain is the AI-powered note-taking app that helps you capture, connect, and recall your ideas effortlessly. It's like having a conversation with your past self.
+                </p>
+                <div class="d3-cta-group">
+                    <a href="#" class="d3-btn-large">
+                        Get started for free
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="d3-btn-play">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <polygon points="5,3 13,8 5,13" fill="currentColor"/>
+                        </svg>
+                        Watch demo
+                    </a>
+                </div>
+                <div class="d3-trust">
+                    <div class="d3-avatars">
+                        <span class="d3-avatar">A</span>
+                        <span class="d3-avatar">B</span>
+                        <span class="d3-avatar">C</span>
+                        <span class="d3-avatar">D</span>
+                    </div>
+                    <span>Join <strong>12,000+</strong> knowledge workers</span>
+                </div>
+            </div>
+            <div class="d3-hero-visual">
+                <div class="d3-card-stack">
+                    <div class="d3-card d3-card-1">
+                        <div class="d3-card-header">
+                            <span class="d3-card-emoji">💡</span>
+                            <span class="d3-card-title">Business ideas</span>
+                        </div>
+                        <div class="d3-card-body">
+                            <p>AI-powered personal finance tool that...</p>
+                            <div class="d3-card-tags">
+                                <span>#startup</span>
+                                <span>#finance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d3-card d3-card-2">
+                        <div class="d3-card-header">
+                            <span class="d3-card-emoji">📖</span>
+                            <span class="d3-card-title">Book: Atomic Habits</span>
+                        </div>
+                        <div class="d3-card-body">
+                            <p>Key insight: Systems > Goals. Focus on...</p>
+                            <div class="d3-card-tags">
+                                <span>#reading</span>
+                                <span>#habits</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d3-card d3-card-3">
+                        <div class="d3-card-header">
+                            <span class="d3-card-emoji">🎯</span>
+                            <span class="d3-card-title">Q2 Goals</span>
+                        </div>
+                        <div class="d3-card-body">
+                            <p>Launch MVP by March 31st. Target: 1000 users...</p>
+                            <div class="d3-card-tags">
+                                <span>#goals</span>
+                                <span>#q2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d3-features">
+            <div class="d3-section-header">
+                <h2>Everything you need to think better</h2>
+                <p>Powerful features that adapt to your workflow</p>
+            </div>
+            <div class="d3-feature-grid">
+                <div class="d3-feature-card">
+                    <div class="d3-feature-icon-wrap">
+                        <span>✨</span>
+                    </div>
+                    <h3>AI Summaries</h3>
+                    <p>Get instant summaries of long notes and documents. Ask questions about your knowledge base.</p>
+                </div>
+                <div class="d3-feature-card">
+                    <div class="d3-feature-icon-wrap">
+                        <span>🧠</span>
+                    </div>
+                    <h3>Knowledge Graph</h3>
+                    <p>See how your ideas connect. Discover relationships you didn't know existed.</p>
+                </div>
+                <div class="d3-feature-card">
+                    <div class="d3-feature-icon-wrap">
+                        <span>🔄</span>
+                    </div>
+                    <h3>Spaced Repetition</h3>
+                    <p>Never forget what you learn. Smart reminders based on how well you know each topic.</p>
+                </div>
+                <div class="d3-feature-card">
+                    <div class="d3-feature-icon-wrap">
+                        <span>📱</span>
+                    </div>
+                    <h3>Everywhere</h3>
+                    <p>Web, desktop, and mobile. Your notes sync instantly across all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DESIGN 4: Bento Grid / Editorial ==================== -->
+    <section class="design-page" id="design-4">
+        <nav class="d4-nav">
+            <div class="d4-logo">
+                <span class="d4-logo-mark">SB</span>
+                <span>SecondBrain</span>
+            </div>
+            <div class="d4-nav-links">
+                <a href="#">Product</a>
+                <a href="#">Manifesto</a>
+                <a href="#">Pricing</a>
+            </div>
+            <a href="#" class="d4-btn-primary">Get the app</a>
+        </nav>
+
+        <div class="d4-hero">
+            <div class="d4-hero-text">
+                <h1 class="d4-title">
+                    <span class="d4-line">Your mind,</span>
+                    <span class="d4-line d4-emphasis">amplified.</span>
+                </h1>
+                <p class="d4-subtitle">
+                    SecondBrain isn't just another note app. It's a thinking partner that helps you capture fleeting ideas, build lasting knowledge, and make connections that spark breakthroughs.
+                </p>
+                <div class="d4-cta-group">
+                    <a href="#" class="d4-btn-large">Download for free</a>
+                    <a href="#" class="d4-link">See what's new →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d4-bento">
+            <div class="d4-bento-item d4-bento-large">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">🧠</span>
+                    <h3>Your second brain</h3>
+                    <p>Capture every thought, idea, and insight. Our AI organizes and connects them automatically, so you can focus on thinking — not filing.</p>
+                </div>
+                <div class="d4-bento-visual">
+                    <div class="d4-graph">
+                        <div class="d4-node d4-node-1">Ideas</div>
+                        <div class="d4-node d4-node-2">Projects</div>
+                        <div class="d4-node d4-node-3">Goals</div>
+                        <div class="d4-node d4-node-4">Reading</div>
+                        <div class="d4-node d4-node-5">Journal</div>
+                        <svg class="d4-connections">
+                            <line x1="50" y1="50" x2="150" y2="30"/>
+                            <line x1="150" y1="30" x2="200" y2="100"/>
+                            <line x1="50" y1="50" x2="30" y2="120"/>
+                            <line x1="30" y1="120" x2="150" y2="150"/>
+                            <line x1="200" y1="100" x2="150" y2="150"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="d4-bento-item d4-bento-tall">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">⚡</span>
+                    <h3>Instant capture</h3>
+                    <p>Save a thought in under 2 seconds. Voice, text, image — whatever comes naturally.</p>
+                </div>
+                <div class="d4-capture-demo">
+                    <div class="d4-capture-item">🎤 "Remember this idea..."</div>
+                    <div class="d4-capture-item">📸 [Photo captured]</div>
+                    <div class="d4-capture-item">✍️ Quick text note</div>
+                    <div class="d4-capture-item">🔗 [URL saved]</div>
+                </div>
+            </div>
+            <div class="d4-bento-item d4-bento-wide">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">🔗</span>
+                    <h3>Smart connections</h3>
+                    <p>SecondBrain automatically finds links between your notes, surfacing relevant context when you need it most.</p>
+                </div>
+                <div class="d4-connection-demo">
+                    <div class="d4-conn-note">
+                        <span class="d4-conn-title">Design Systems</span>
+                        <span class="d4-conn-link">↕ linked to 3 notes</span>
+                    </div>
+                    <div class="d4-conn-arrow">→</div>
+                    <div class="d4-conn-note">
+                        <span class="d4-conn-title">UI Principles</span>
+                        <span class="d4-conn-link">↕ linked to 5 notes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d4-bento-item d4-bento-small">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">🔒</span>
+                    <h3>Private by default</h3>
+                    <p>End-to-end encryption. Your thoughts stay yours.</p>
+                </div>
+            </div>
+            <div class="d4-bento-item d4-bento-small">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">🌍</span>
+                    <h3>Works everywhere</h3>
+                    <p>Web, Mac, Windows, iOS, Android.</p>
+                </div>
+            </div>
+            <div class="d4-bento-item d4-bento-small">
+                <div class="d4-bento-content">
+                    <span class="d4-bento-emoji">🤖</span>
+                    <h3>AI-powered</h3>
+                    <p>Summaries, suggestions, and smart search.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d4-cta-section">
+            <h2>Ready to build your second brain?</h2>
+            <a href="#" class="d4-btn-large">Get started for free</a>
+        </div>
+    </section>
+
+    <!-- ==================== DESIGN 5: Bold / Brutalist ==================== -->
+    <section class="design-page" id="design-5">
+        <nav class="d5-nav">
+            <div class="d5-logo">SECOND<span>BRAIN</span></div>
+            <div class="d5-nav-links">
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">About</a>
+            </div>
+            <a href="#" class="d5-btn-primary">TRY IT FREE</a>
+        </nav>
+
+        <div class="d5-hero">
+            <div class="d5-hero-content">
+                <div class="d5-tag">THE NOTE APP FOR YOUR MIND</div>
+                <h1 class="d5-title">
+                    THINK.<br>
+                    CAPTURE.<br>
+                    <span class="d5-highlight">CONNECT.</span>
+                </h1>
+                <p class="d5-subtitle">
+                    Your brain is amazing. But it forgets things. SecondBrain is the external memory system that helps you capture every idea, connect every concept, and never lose a thought again.
+                </p>
+                <div class="d5-cta-group">
+                    <a href="#" class="d5-btn-large">START FREE →</a>
+                    <a href="#" class="d5-link">Watch 2-min demo</a>
+                </div>
+            </div>
+            <div class="d5-hero-visual">
+                <div class="d5-note-grid">
+                    <div class="d5-note d5-note-1">
+                        <span class="d5-note-num">01</span>
+                        <span class="d5-note-text">Idea: AI-powered recipe generator based on what's in your fridge</span>
+                    </div>
+                    <div class="d5-note d5-note-2">
+                        <span class="d5-note-num">02</span>
+                        <span class="d5-note-text">Meeting notes: Q2 planning — focus on user retention</span>
+                    </div>
+                    <div class="d5-note d5-note-3">
+                        <span class="d5-note-num">03</span>
+                        <span class="d5-note-text">Book summary: "Thinking, Fast and Slow" — System 1 vs System 2</span>
+                    </div>
+                    <div class="d5-note d5-note-4">
+                        <span class="d5-note-num">04</span>
+                        <span class="d5-note-text">Design principle: Less is more. Remove before you add.</span>
+                    </div>
+                    <div class="d5-note d5-note-5">
+                        <span class="d5-note-num">05</span>
+                        <span class="d5-note-text">Goal: Read 24 books this year. Currently at 12/24.</span>
+                    </div>
+                    <div class="d5-note d5-note-6">
+                        <span class="d5-note-num">06</span>
+                        <span class="d5-note-text">Quote: "The best way to predict the future is to create it." — Alan Kay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d5-marquee">
+            <div class="d5-marquee-track">
+                <span>CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE ·</span>
+                <span>CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE · CAPTURE · CONNECT · CREATE ·</span>
+            </div>
+        </div>
+
+        <div class="d5-features">
+            <div class="d5-feature">
+                <span class="d5-feature-num">01</span>
+                <h3>CAPTURE ANYTHING</h3>
+                <p>Text, voice, images, links — capture it all in under 2 seconds. Our quick-capture system means you never lose a fleeting thought.</p>
+            </div>
+            <div class="d5-feature">
+                <span class="d5-feature-num">02</span>
+                <h3>CONNECT IDEAS</h3>
+                <p>Our AI automatically finds connections between your notes. Discover relationships you didn't know existed and spark new insights.</p>
+            </div>
+            <div class="d5-feature">
+                <span class="d5-feature-num">03</span>
+                <h3>CREATE WITH CONFIDENCE</h3>
+                <p>With all your knowledge organized and connected, creating becomes effortless. Write, design, and build with your full knowledge base at your fingertips.</p>
+            </div>
+        </div>
+
+        <div class="d5-cta-section">
+            <div class="d5-cta-box">
+                <h2>STOP FORGETTING.<br>START BUILDING.</h2>
+                <p>Join thousands of thinkers, creators, and builders who use SecondBrain as their external memory.</p>
+                <a href="#" class="d5-btn-large">GET STARTED FREE →</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

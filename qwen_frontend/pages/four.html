@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 4: Retro-Futuristic (Lo-Fi)</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --text: #00ff41; /* Matrix Green */
+            --accent: #ff00ff; /* Neon Pink */
+            --dim: #003b00;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            text-shadow: 0 0 5px var(--text);
+        }
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.06), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        header {
+            border: 1px solid var(--text);
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            background: var(--text);
+            color: var(--bg);
+            display: inline-block;
+            padding: 0 1rem;
+        }
+        .status-box {
+            border: 1px solid var(--text);
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--text);
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .switch-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            color: var(--dim);
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+        .switch-btn:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <header>
+        <span>SYSTEM_CORE: ONLINE</span>
+        <span>USER: ADMIN</span>
+    </header>
+    <main>
+        <h1>NEURAL_LINK</h1>
+        <div class="status-box">
+            <p>> INITIALIZING SECOND BRAIN...</p>
+            <p>> LOADING MEMORY NODES... <span class="blink">_</span></p>
+            <p>> STATUS: <span style="color: var(--accent)">READY</span></p>
+        </div>
+        <p>A terminal-first interface for the deep thinkers. High density, low latency.</p>
+        <a href="#" class="btn">Connect Core</a>
+    </main>
+    <a href="../index.html" class="switch-btn">Return to Mainframe</a>
+</body>
+</html>

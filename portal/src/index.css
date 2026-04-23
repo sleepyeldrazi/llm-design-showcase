@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #09090b;
+  --color-surface: #111114;
+  --color-surface-2: #19191e;
+  --color-border: #27272f;
+  --color-border-hover: #3a3a45;
+  --color-dim: #52525e;
+  --color-muted: #8b8b9e;
+  --color-fg: #e2e2ed;
+  --color-accent: #0dffd6;
+  --color-accent-dim: #0dffd620;
+  --color-accent-mid: #0dffd650;
+  --color-model-gemma: #f472b6;
+  --color-model-glm: #a78bfa;
+  --color-model-qwen: #60a5fa;
+
+  --font-display: "Instrument Serif", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--color-void);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-hover);
+  }
+}
